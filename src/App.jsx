@@ -1,25 +1,27 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './components/Home'; 
-import About from './components/About'; 
-import Products from './components/Products'; 
-import Login from './components/Login'; // Ensure this import
 import Footer from './components/Footer';
+import Products from './components/Products';
+import Login from './components/Login';
+import Slider from './components/Slider'
 
-const App = () => {
+function App() {
   return (
     <Router>
-      <Navbar />
+      
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/login" element={<Login />} /> {/* Login route */}
+        {/* Routes with Navbar and Footer */}
+        <Route path="/" element={<><Navbar /><Slider /><Products /><Footer /></>} />
+        <Route path="/products" element={<><Navbar /><Slider /><Products /><Footer /></>} />
+        
+        {/* Route without Navbar and Footer */}
+        <Route path="/login" element={<><Navbar /><Login /><Footer/></>} />
+        
+        {/* Add more routes here as needed */}
       </Routes>
-      <Footer />
     </Router>
   );
-};
+}
 
 export default App;
